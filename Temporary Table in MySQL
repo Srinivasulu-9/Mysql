@@ -1,0 +1,47 @@
+Temporary Table:
+-------------------------------------------------------------------------------------------------------
+The Temporary Tables are the tables that are created in a database to store data temporarily. 
+These tables will be automatically deleted once the current client session is terminated or ends. 
+In addition to that, these tables can be deleted explicitly if the users decide to drop them manually. 
+You can perform various SQL operations on temporary tables, just like you would with permanent tables, 
+including CREATE, UPDATE, DELETE, INSERT, JOIN, etc.
+
+Syntax:
+--------------------------------------------------------------------------------------------------------
+CREATE TEMPORARY TABLE table_name(
+   column1 datatype,
+   column2 datatype,
+   column3 datatype,
+   .....
+   columnN datatype,
+   PRIMARY KEY( columns )
+);
+
+
+Example:
+--------------------------------------------------------------------------------------------------------
+CREATE TEMPORARY TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL,
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),
+   PRIMARY KEY (ID)
+);
+
+Insert Operation on Temp table:
+--------------------------------------------------------------------------------------------------------
+INSERT INTO CUSTOMERS VALUES
+   (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 ),
+   (2, 'Khilan', 25, 'Delhi', 1500.00 ),
+   (3, 'kaushik', 23, 'Kota', 2000.00 );
+
+
+Access Temp table:
+--------------------------------------------------------------------------------------------------------
+SELECT * FROM CUSTOMERS;
+
+
+Drop Temp table:
+--------------------------------------------------------------------------------------------------------
+DROP TEMPORARY TABLE CUSTOMERS;
