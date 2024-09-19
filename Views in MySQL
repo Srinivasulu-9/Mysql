@@ -1,32 +1,62 @@
 Views in Mysql:
 
+What are Views in MySQL?
+------------------------------------------------------------------------------------------------------------------------------------------
+Views in MySQL are indeed “virtual tables” that are used to view data from one or more tables. 
+Views do not have their data but rather store data virtually, consisting of rows and columns. 
+Views are very helpful in restricting access to your application’s critical data to third-party users. 
+Views in MySQL can be created by selecting some/all columns and some/all rows of a table by filtering out the rows based on some condition.
+
+Syntax:
+-------------------------------------
+CREATE VIEW <view_name> AS
+
+SELECT <column1>, <column2>……., <columnN>
+
+FROM <table-name>
+
+WHERE [conditions];
+---------------------------------------------
+Create a simple view:
+---------------------------------------------
 create view customer_view as
 select customerNumber, customerName, city, state, postalCode, country, creditLimit
 from customers
 where country = 'USA';
 
-
+Access view:
+------------------------------------------------------
 select * from customer_view;
 
-
+Create a Complex view:
+-------------------------------------------------------
 create view Emp_data as 
 select Id, Dept, Name, Salary, Bonus from table_1
 Inner Join table_2_emp 
 ON table_1.Id = table_2_emp.Emp_id
 and table_1.Dept !=  'HR' ; 
 
+Access view:
+------------------------------------------------------
 select * from Emp_data;
 
-
+Update a view:
+---------------------------------------------------------
 CREATE OR REPLACE VIEW customer_view AS
 SELECT customerNumber, customerName, city, state, country, creditLimit, salesRepEmployeeNumber
 FROM customers
 WHERE state is not null;
 
+
+Insert data into view:
+----------------------------------------------------------
 INSERT INTO customer_view(customerNumber, customerName, city, state, country, creditLimit, salesRepEmployeeNumber) 
 VALUES(1001, 'Sai Akash','Godavari', 'Andhra', 'India', 80000, '2001');
 
+Delete data from view:
+-----------------------------------------------------------
 DELETE FROM customer_view WHERE country = 'India';
 
-
+Drop a view:
+-----------------------------------------------------------
 DROP VIEW sample_view_2;
